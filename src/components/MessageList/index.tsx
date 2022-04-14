@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { api } from '../../services/api'
 import { Message, MessageProps } from '../Message'
 
@@ -9,12 +9,13 @@ export function MessageList() {
   const [currentMessages, setCurrentMessages] = useState<MessageProps[]>([])
 
   useEffect(() => {
-    async function fetchMessages() {
-      const messagesResponse = await api.get<MessageProps[]>('/messages/last3')
-      setCurrentMessages(messagesResponse.data)
-    }
-
-    fetchMessages()
+    console.log("currentMessages", currentMessages)
+    
+    api.get<MessageProps[]>('/messages/last3').then(response => {
+      console.log("response")
+      setCurrentMessages(response.data)
+    })
+    
   }, [])
 
   return (

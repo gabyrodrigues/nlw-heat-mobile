@@ -3,15 +3,15 @@ import { COLORS, FONTS } from '../../theme'
 
 export const styles = StyleSheet.create({
   container: {
-    marginBottom: 36,
+    marginBottom: 24,
     width: '100%'
   },
   message: {
     color: COLORS.WHITE,
     fontFamily: FONTS.REGULAR,
     fontSize: 15,
-    lineHeight: 20,
-    marginBottom: 12
+    lineHeight: 16,
+    marginBottom: 8
   },
   footer: {
     alignItems: 'center',

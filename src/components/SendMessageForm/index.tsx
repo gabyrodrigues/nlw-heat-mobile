@@ -12,7 +12,6 @@ export function SendMessageForm() {
 
   async function handleMessageSubmit() {
     const messageFormatted = message.trim()
-    console.log("messageFormatted new", messageFormatted)
     
     
     if(messageFormatted.length > 0) {

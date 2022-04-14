@@ -51,7 +51,6 @@ function AuthProvider({ children }: AuthProviderProps) {
       const authSessionResponse = await AuthSession.startAsync({ authUrl }) as AuthorizationResponse
 
       if(authSessionResponse.type === 'success' && authSessionResponse.params.error !== 'access_denied') {
-        console.log("code", authSessionResponse.params.code)
         const authResponse = await api.post<AuthResponse>('/authenticate', { code: authSessionResponse.params.code })
         const { user, token } = authResponse.data
 
@@ -81,8 +80,6 @@ function AuthProvider({ children }: AuthProviderProps) {
     async function loadUserStorageData() {
       const userStorage = await AsyncStorage.getItem(USER_STORAGE)
       const tokenStorage = await AsyncStorage.getItem(TOKEN_STORAGE)
-
-      console.log('tokenStorage', tokenStorage)
 
       if(userStorage && tokenStorage) {
         api.defaults.headers.common['Authorization'] = `Bearer ${tokenStorage}`
